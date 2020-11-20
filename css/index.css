@@ -1,0 +1,65 @@
+*{
+				margin: 0;
+				padding: 0;
+			}
+			ul,ol{
+				list-style: none;
+			}
+			#app{
+				width: 370px;
+				height: 610px;
+				/* border: 1px solid; */
+				box-shadow: 10px 10px 10px cornflowerblue;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translateY(-50%) translateX(-50%);
+				background-color: gainsboro;
+				border-radius: 10px;
+			}
+			#app h3{
+				font-family: "楷体";
+				text-align: center;
+				margin:10px 0;
+				background: linear-gradient(to right, red, blue);
+				-webkit-background-clip: text;
+				color: transparent;
+				-webkit-text-fill-color: transparent;
+				text-fill-color: transparent;
+			}
+			#music{
+				width: 350px;
+				border: none;
+				margin: 0 10px;
+				background-color: transparent;
+				text-align: center;
+			}
+			#musicList{
+				width: 350px;
+				height: 500px;
+				margin: 0 auto;
+				overflow-y: scroll;
+				background-image: linear-gradient(to right bottom,#ffb6b9 25%,#fae3d9 50%,#bbded6 75%,#61c0bf 100%);
+				border-radius: 5px;
+			}
+			#musicList li{
+				height: 20px;
+				margin: 10px;
+				line-height: 20px;
+				padding: 10px 5px;
+				border-radius: 20px;
+			}
+			#musicList .active{
+				background-color: aquamarine;
+			}
+			#musicList li span:first-of-type{
+				margin-left: 20px;
+				float: left;
+			}
+			#musicList li span:last-of-type{
+				float: right;
+				margin-right: 20px;
+			}
+			#musicList li:first-of-type{
+				border-bottom: 1px dashed white;
+			}

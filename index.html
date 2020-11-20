@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue简易音乐播放器</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="./css/index.css"/>
+	</head>
+	<body>
+		<div id="app">
+			<h3>{{ title }}</h3>
+			<audio :src="getCurrentSongSrc" autoplay controls id="music"  @play="startPlaySetVolume" loop>
+				当前浏览器不支持audio
+			</audio>
+			<ul id="musicList">
+				<li>
+					<span>歌曲名</span>
+					<span>歌手</span>
+				</li>
+				<li v-for="(item,index) in musicData" :class="{active:currentIndex == index}" @click="handlerClick(index)" @dblclick="reloadMusic(index)">
+					<span>{{ item.id }}. {{ item.name }}</span>
+					<span>{{ item.singer }}</span>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		new Vue({
+			el:"#app",
+			data(){
+				return {
+					title:"欢迎造访简易音乐播放器",
+					musicData:[
+						{id:1,src:"./audioSource/陈慧娴 - 千千阙歌.mp3",singer:"陈慧娴",name:"千千阙歌"},
+						{id:2,src:"./audioSource/光泽 - 空心.mp3",singer:"光泽",name:"空心"},
+						{id:3,src:"./audioSource/郭顶 - 保留.mp3",singer:"郭顶",name:"保留"},
+						{id:4,src:"./audioSource/郭顶 - 水星记.mp3",singer:"郭顶",name:"水星记"},
+						{id:5,src:"./audioSource/赖伟锋 - 闹够了没有.mp3",singer:"赖伟锋",name:"闹够了没有"},
+						{id:6,src:"./audioSource/李荣浩 - 喜剧之王.mp3",singer:"李荣浩",name:"喜剧之王"},
+						{id:7,src:"./audioSource/林忆莲 - 至少还有你.mp3",singer:"林忆莲",name:"至少还有你"},
+						{id:8,src:"./audioSource/苏打绿 - 我好想你.mp3",singer:"苏打绿",name:"我好想你"},
+						{id:9,src:"./audioSource/王杰 - 谁明浪子心.mp3",singer:"王杰",name:"谁明浪子心"},
+						{id:10,src:"./audioSource/王杰 - 我是真的爱上你.mp3",singer:"王杰",name:"我是真的爱上你"},
+						{id:11,src:"./audioSource/王力宏 _ 卢巧音 - 好心分手.mp3",singer:"王力宏",name:"好心分手"},
+						{id:12,src:"./audioSource/五月天 - 你不是真正的快乐.mp3",singer:"五月天",name:"你不是真正的快乐"},
+						{id:13,src:"./audioSource/五月天 - 突然好想你.mp3",singer:"五月天",name:"突然好想你"},
+						{id:14,src:"./audioSource/伍思凯 - 特别的爱给特别的你.mp3",singer:"伍思凯",name:"特别的爱给特别的你"},
+						{id:15,src:"./audioSource/萧敬腾 - 我怀念的.mp3",singer:"萧敬腾",name:"我怀念的"},
+						{id:16,src:"./audioSource/萧敬腾 - 新不了情.mp3",singer:"萧敬腾",name:"新不了情"},
+						{id:17,src:"./audioSource/杨丞琳 - 雨爱.mp3",singer:"杨丞琳",name:"雨爱"},
+						{id:18,src:"./audioSource/庾澄庆 - 让我一次爱个够.mp3",singer:"庾澄庆",name:"让我一次爱个够"},
+						{id:19,src:"./audioSource/张靓颖 - 天下无双.mp3",singer:"张靓颖",name:"天下无双"},
+						{id:20,src:"./audioSource/张宇 - 雨一直下.mp3",singer:"张宇",name:"雨一直下"}
+					],
+					currentIndex:0
+				}
+			},
+			methods:{
+				startPlaySetVolume(){
+					document.getElementById("music").volume = 0.5;
+				},
+				handlerClick(index){
+					this.currentIndex = index;
+				},
+				reloadMusic(index){
+					this.currentIndex = index;
+					document.getElementById("music").load();
+				}
+			},
+			computed:{
+				getCurrentSongSrc(){
+					return this.musicData[this.currentIndex].src;
+				}
+			}
+		})
+	</script>
+</html>
